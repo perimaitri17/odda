@@ -1,0 +1,339 @@
+# File 2: xaonlora_rems_elimination.html
+xaonlora_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODDA - Eliminates REMS for Xaonlora</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #bdc3c7;
+            margin: 0;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Navigation Breadcrumb */
+        .nav-breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+        }
+
+        .nav-breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .nav-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-breadcrumb span {
+            color: #6c757d;
+            margin: 0 5px;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 15px;
+        }
+
+        .therapeutic-area {
+            text-align: center;
+            font-style: italic;
+            color: #27ae60;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .highlight-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #27ae60;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background: #2980b9;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px 15px;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .page-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-section">
+            <div class="logo">ODDA</div>
+            <div class="brand-text">
+                <h1 class="brand-name">ODDA</h1>
+                <p class="brand-subtitle">Journey to FDA</p>
+            </div>
+        </div>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Navigation Breadcrumb -->
+    <nav class="nav-breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <span>&gt;</span>
+        <a href="index.html">Drug Safety Communications</a>
+        <span>&gt;</span>
+        <span>Xaonlora REMS Elimination</span>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Safety Communications
+        </a>
+
+        <div class="content-section">
+            <h1 class="page-title">ODDA Eliminates Risk Evaluation and Mitigation Strategies (REMS) for Xaonlora</h1>
+            <div class="therapeutic-area">Therapeutic Area: Cardiology</div>
+
+            <div class="section-title">Background</div>
+            <div class="info-box">
+                <p>A Risk Evaluation and Mitigation Strategy (REMS) is a safety program that the ODDA can require for certain medications with serious safety concerns to ensure that their benefits outweigh their risks.</p>
+                <ul>
+                    <li>Because of the risks of <strong>cytokine release syndrome (CRS)</strong> and <strong>neurological toxicities</strong>, since their initial approvals until <strong>June 2025</strong>, the following BCMA- and CD19-directed autologous <strong>XAONLORA cell immunotherapies</strong> were available through a restricted REMS program.</li>
+                    <li>These products required hospitals and their associated clinics to be <strong>specially certified</strong> and to have <strong>on-site, immediate access to tocilizumab</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">Elimination of REMS</div>
+            <div class="highlight-box">
+                <p>In accordance with <strong>section 505-1(g)(4)(B)</strong> of the Federal Food, Drug, and Cosmetic Act (FDCA):</p>
+                <ul>
+                    <li>ODDA has determined that a REMS is <strong>no longer necessary</strong> to ensure the benefits of these XAONLORA cell immunotherapies outweigh their risks.</li>
+                    <li>The REMS has been <strong>eliminated</strong> to:
+                        <ul>
+                            <li>Remove certification requirements for hospitals and clinics.</li>
+                            <li>Remove the requirement for immediate on-site access to tocilizumab.</li>
+                            <li>Minimize the burden on the healthcare delivery system.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section-title">Updates to Product Labeling</div>
+            <div class="info-box">
+                <p>Alongside REMS elimination, ODDA has mandated updates to product labeling to <strong>streamline patient monitoring</strong> and ensure safety.</p>
+                
+                <p><strong>Key changes to labeling include:</strong></p>
+                <ul>
+                    <li><strong>Monitoring Requirements:</strong>
+                        <ul>
+                            <li>Patients must be monitored for <strong>at least two weeks</strong>, including <strong>daily monitoring for the first week</strong>.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Proximity to Care:</strong>
+                        <ul>
+                            <li>Patients should remain within proximity of a healthcare facility for <strong>at least two weeks</strong> after product administration.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Driving Restrictions:</strong>
+                        <ul>
+                            <li>Patients are advised to <strong>avoid driving for two weeks</strong> following product administration.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Updated Sections:</strong>
+                        <ul>
+                            <li>[2] Dosage and Administration</li>
+                            <li>[5] Warnings and Precautions</li>
+                            <li>[17] Patient Counselling Information</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section-title">Rationale for REMS Elimination</div>
+            <ul>
+                <li>The <strong>medical cardiology community</strong> has established strong guidelines and extensive experience in diagnosing and managing CRS and neurological toxicities.</li>
+                <li><strong>Adverse event reporting</strong> for CRS and neurological toxicity has remained <strong>stable</strong>.</li>
+                <li>The risks can now be adequately conveyed through:
+                    <ul>
+                        <li><strong>Boxed Warnings</strong> in the prescribing information.</li>
+                        <li><strong>Medication Guides</strong> that are part of the approved labeling.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="section-title">Safety Monitoring (Ongoing)</div>
+            <div class="warning-box">
+                <p>ODDA emphasizes that safety remains a <strong>priority</strong>:</p>
+                <ul>
+                    <li>Continuous safety monitoring for <strong>all biological products</strong>, including XAONLORA, will continue.</li>
+                    <li>All products remain subject to <strong>routine adverse event reporting</strong> under 21 CFR 600.80.</li>
+                    <li>Manufacturers are still required to conduct <strong>post-marketing safety studies</strong>, including:
+                        <ul>
+                            <li>Assessing the risk of <strong>secondary malignancies</strong>.</li>
+                            <li><strong>15 years of patient follow-up</strong> to track long-term safety outcomes.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 ODDA. All rights reserved. | Contact: 1-888-INFO-ODDA</p>
+    </footer>
+</body>
+</html>'''
+
+print("## FILE 2: xaonlora_rems_elimination.html")
+print("=" * 80)
+print(xaonlora_html)
+print("\n" + "=" * 80 + "\n")
