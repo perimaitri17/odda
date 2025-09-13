@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+# Create updated index.html with JavaScript functionality to show static links first, then dynamic links after refresh
+updated_index_html = '''<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -185,12 +186,48 @@
       margin-top: 30px;
     }
 
+    .communications-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
     .communications-title {
       font-size: 1.3em;
       color: #2c3e50;
-      margin-bottom: 20px;
       text-transform: uppercase;
       font-weight: 600;
+      margin: 0;
+    }
+
+    .refresh-button {
+      background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .refresh-button:hover {
+      background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+    }
+
+    .refresh-button i {
+      transition: transform 0.3s ease;
+    }
+
+    .refresh-button:hover i {
+      transform: rotate(180deg);
     }
 
     .communication-item {
@@ -238,6 +275,15 @@
       color: #3498db;
       font-size: 14px;
       line-height: 1.5;
+    }
+
+    /* Hidden content for dynamic loading */
+    .dynamic-content {
+      display: none;
+    }
+
+    .static-content {
+      display: block;
     }
 
     /* Archive Notice */
@@ -428,6 +474,12 @@
         flex-direction: column;
         text-align: center;
       }
+
+      .communications-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -482,8 +534,44 @@
 </div>
 </div>
 <div class="communications-section">
+<div class="communications-header">
 <h3 class="communications-title">Current Drug Safety Communications</h3>
+<button class="refresh-button" id="refreshBtn">
+<i class="fas fa-sync-alt"></i>
+Refresh Data
+</button>
+</div>
 
+<div id="communicationsList">
+<!-- Static FDA Links (shown initially) -->
+<div class="static-content">
+<a class="communication-item" href="https://www.fda.gov/safety/medical-product-safety-information/fda-adds-warning-about-rare-occurrence-serious-liver-injury-use-veozah-fezolinetant-hot-flashes-due" target="_blank">
+<div class="comm-date">12/17/2024</div>
+<div class="comm-title">FDA Adds Warning About Rare Occurrence of Serious Liver Injury with Use of Veozah (fezolinetant) for Hot Flashes Due to Menopause</div>
+<div class="comm-description">
+    FDA adds Boxed Warning to highlight rare but serious liver injury risk with Veozah (fezolinetant) for menopause hot flashes. Patients experiencing liver injury symptoms should stop medicine immediately and contact healthcare provider.
+  </div>
+</a>
+
+<a class="communication-item" href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/buy-herbalcom-issues-voluntary-nationwide-recall-nhan-sam-tuyet-lien-truy-phong-hoan-capsules-due" target="_blank">
+<div class="comm-date">12/13/2024</div>
+<div class="comm-title">Buy-herbal.com Issues Voluntary Nationwide Recall of Nhan Sam Tuyet Lien Truy Phong Hoan Capsules Due to Undeclared Drugs</div>
+<div class="comm-description">
+    FDA analysis found undeclared prescription drugs in herbal capsules marketed for gout and arthritis. Products contain furosemide, dexamethasone, and chlorpheniramine per capsule, posing serious health risks.
+  </div>
+</a>
+
+<a class="communication-item" href="https://www.fda.gov/safety/medical-product-safety-information/ocaliva-obeticholic-acid-intercept-pharmaceuticals-drug-safety-communication-serious-liver-injury" target="_blank">
+<div class="comm-date">12/12/2024</div>
+<div class="comm-title">Ocaliva (obeticholic acid): Drug Safety Communication - Serious Liver Injury Being Observed in Patients without Cirrhosis</div>
+<div class="comm-description">
+    FDA reports serious liver injury in primary biliary cholangitis patients without cirrhosis taking Ocaliva. Some cases resulted in liver transplant. Frequent liver monitoring required.
+  </div>
+</a>
+</div>
+
+<!-- Dynamic ODDA Links (hidden initially, shown after refresh) -->
+<div class="dynamic-content" id="dynamicContent">
 <a class="communication-item" href="opioid_prescribing_info.html">
 <div class="comm-date">09-10-2025</div>
 <div class="comm-title">ODDA Requires Opioid Pain Medicine Manufacturers to Update Prescribing Information (Long-Term Use)</div>
@@ -506,6 +594,9 @@
   </div>
 </a>
 </div>
+</div>
+
+</div>
 <div class="archive-notice">
 <strong>Some Drug Safety Communications (DSCs) posted from 2019 to 2015 have been archived.</strong>
         Because FDA issued newer DSCs with updated information about the medicine, to access these archived DSCs, visit the <a class="archive-link" href="#">Way Back Archive</a>.
@@ -515,10 +606,10 @@
 <aside class="sidebar">
 <div class="sidebar-section">
 <h3 class="sidebar-title">Recent ODDA Notices</h3>
-<ul style="list-style:none; padding:0; margin:0;">
-<li style="margin-bottom:10px;"><strong>Opioid Prescribing Info Updated</strong><br/><small>09-10-2025</small></li>
-<li style="margin-bottom:10px;"><strong>Xaonlora REMS Eliminated</strong><br/><small>09-10-2025</small></li>
-<li style="margin-bottom:10px;"><strong>Cetirizine Pruritus Warning</strong><br/><small>09-10-2025</small></li>
+<ul style="list-style:none; padding:0; margin:0;" id="sidebarNotices">
+<li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
+<li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
+<li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
 </ul>
 </div>
 </aside>
@@ -581,8 +672,61 @@
 </div>
 </footer>
 <script>
-    // Add some basic interactivity
+    // JavaScript for refresh functionality
     document.addEventListener('DOMContentLoaded', function() {
+      const refreshBtn = document.getElementById('refreshBtn');
+      const staticContent = document.querySelector('.static-content');
+      const dynamicContent = document.getElementById('dynamicContent');
+      const sidebarNotices = document.getElementById('sidebarNotices');
+      
+      let isRefreshed = false;
+
+      refreshBtn.addEventListener('click', function() {
+        if (!isRefreshed) {
+          // Hide static content and show dynamic content
+          staticContent.style.display = 'none';
+          dynamicContent.style.display = 'block';
+          
+          // Update sidebar with all notices
+          sidebarNotices.innerHTML = `
+            <li style="margin-bottom:10px;"><strong>Opioid Prescribing Info Updated</strong><br/><small>09-10-2025</small></li>
+            <li style="margin-bottom:10px;"><strong>Xaonlora REMS Eliminated</strong><br/><small>09-10-2025</small></li>
+            <li style="margin-bottom:10px;"><strong>Cetirizine Pruritus Warning</strong><br/><small>09-10-2025</small></li>
+            <li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
+            <li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
+            <li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
+          `;
+          
+          // Update button text
+          refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Data Refreshed';
+          refreshBtn.style.background = 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)';
+          
+          isRefreshed = true;
+          
+          // Show notification
+          showNotification('ODDA data successfully loaded!');
+        } else {
+          // Reset to original state
+          staticContent.style.display = 'block';
+          dynamicContent.style.display = 'none';
+          
+          // Reset sidebar
+          sidebarNotices.innerHTML = `
+            <li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
+            <li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
+            <li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
+          `;
+          
+          // Reset button
+          refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Data';
+          refreshBtn.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+          
+          isRefreshed = false;
+          
+          showNotification('Showing FDA communications');
+        }
+      });
+
       // Add click events to communication items
       const commItems = document.querySelectorAll('.communication-item');
       commItems.forEach(item => {
@@ -595,19 +739,67 @@
       });
 
       // Newsletter form submission
-      const newsletterForm = document.querySelector('.newsletter-form');
       const newsletterBtn = document.querySelector('.newsletter-btn');
       
       newsletterBtn.addEventListener('click', function() {
         const email = document.querySelector('.newsletter-input').value;
         if (email) {
-          alert('Thank you for subscribing to Drug Safety Communications!');
+          showNotification('Thank you for subscribing to Drug Safety Communications!');
           document.querySelector('.newsletter-input').value = '';
         } else {
-          alert('Please enter a valid email address.');
+          showNotification('Please enter a valid email address.');
         }
       });
+
+      // Notification function
+      function showNotification(message) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+          color: white;
+          padding: 15px 25px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          z-index: 1000;
+          font-weight: 600;
+          animation: slideIn 0.3s ease-out;
+        `;
+        notification.textContent = message;
+        
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+          }
+        `;
+        document.head.appendChild(style);
+        
+        document.body.appendChild(notification);
+        
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+          notification.remove();
+          style.remove();
+        }, 3000);
+      }
     });
   </script>
 </body>
-</html>
+</html>'''
+
+print("## UPDATED INDEX.HTML WITH REFRESH FUNCTIONALITY")
+print("=" * 80)
+print("✅ Initially shows 3 static FDA links")
+print("✅ Refresh button toggles between static and dynamic content")  
+print("✅ Sidebar updates accordingly")
+print("✅ Visual feedback with notifications")
+print("✅ Button changes appearance when toggled")
+print("\n" + "=" * 80 + "\n")
+print("Copy the code below and save as index.html:")
+print("\n" + updated_index_html)
