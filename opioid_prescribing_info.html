@@ -1,0 +1,356 @@
+# File 1: opioid_prescribing_info.html
+opioid_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODDA - Opioid Pain Medicine Prescribing Information Update</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #bdc3c7;
+            margin: 0;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Navigation Breadcrumb */
+        .nav-breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+        }
+
+        .nav-breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .nav-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-breadcrumb span {
+            color: #6c757d;
+            margin: 0 5px;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 15px;
+        }
+
+        .therapeutic-area {
+            text-align: center;
+            font-style: italic;
+            color: #e74c3c;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background: #2980b9;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px 15px;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .page-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-section">
+            <div class="logo">ODDA</div>
+            <div class="brand-text">
+                <h1 class="brand-name">ODDA</h1>
+                <p class="brand-subtitle">Journey to FDA</p>
+            </div>
+        </div>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Navigation Breadcrumb -->
+    <nav class="nav-breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <span>&gt;</span>
+        <a href="index.html">Drug Safety Communications</a>
+        <span>&gt;</span>
+        <span>Opioid Pain Medicine Update</span>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Safety Communications
+        </a>
+
+        <div class="content-section">
+            <h1 class="page-title">ODDA Requires Opioid Pain Medicine Manufacturers to Update Prescribing Information Regarding Long-Term Use</h1>
+            <div class="therapeutic-area">Therapeutic Area: Pain Management</div>
+
+            <div class="section-title">Safety Concern Announced</div>
+            <div class="warning-box">
+                <ul>
+                    <li>In May 2025, ODDA reviewed new <strong>observational studies (PMRs 3033-1 and 3033-2)</strong> on long-term opioid therapy.</li>
+                    <li>Findings showed <strong>increased risks</strong> of:
+                        <ul>
+                            <li>Misuse</li>
+                            <li>Abuse</li>
+                            <li>Addiction</li>
+                            <li>Fatal & non-fatal overdose</li>
+                        </ul>
+                    </li>
+                    <li>ODDA determined drug labeling must be updated to reflect these risks.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">What ODDA Is Doing (Labeling Updates)</div>
+            <div class="info-box">
+                <p><strong>Key changes required:</strong></p>
+                <ul>
+                    <li>Remove <strong>"extended treatment period"</strong> (misleading safety/efficacy assumption).</li>
+                    <li>Emphasize:
+                        <ul>
+                            <li><strong>Higher doses = higher risks</strong>, persisting throughout therapy.</li>
+                            <li><strong>New quantitative risk estimates</strong> from PMR studies.</li>
+                        </ul>
+                    </li>
+                    <li>Clarify:
+                        <ul>
+                            <li>ER/LA opioids only when <strong>IR opioids are inadequate</strong>.</li>
+                            <li>Avoid <strong>abrupt discontinuation</strong> (risk of withdrawal, uncontrolled pain, suicide).</li>
+                        </ul>
+                    </li>
+                    <li>Add information about:
+                        <ul>
+                            <li><strong>Overdose reversal agents</strong> (naloxone, nalmefene).</li>
+                            <li><strong>Drug interactions</strong> with CNS depressants including gabapentinoids.</li>
+                            <li><strong>Toxic leukoencephalopathy</strong> in overdose settings.</li>
+                            <li><strong>Opioid-induced esophageal dysfunction</strong> (GI warning).</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section-title">Guidance for Health Care Professionals</div>
+            <ul>
+                <li>Use a <strong>multimodal approach</strong> to pain management.</li>
+                <li>Start with <strong>lowest effective dose of IR opioids</strong> for shortest duration.</li>
+                <li>Reserve ER/LA opioids only for <strong>severe, persistent pain</strong>.</li>
+                <li>Regularly re-evaluate benefit-risk profile and monitor for <strong>misuse/addiction</strong>.</li>
+                <li>Discuss overdose reversal options with all patients.</li>
+                <li>Educate patients about risks of combining opioids with <strong>alcohol, benzodiazepines, or gabapentinoids</strong>.</li>
+            </ul>
+
+            <div class="section-title">Guidance for Patients & Caregivers</div>
+            <div class="highlight-box">
+                <ul>
+                    <li><strong>Take opioids exactly as prescribed</strong> — never more often or at higher doses without consulting a doctor.</li>
+                    <li>Store securely and <strong>do not share</strong> medicines.</li>
+                    <li>Dispose of unused opioids at <strong>take-back sites</strong> or with prepaid mail-back envelopes.</li>
+                    <li>Seek emergency help if signs of <strong>respiratory depression</strong> occur.</li>
+                    <li>Learn about and access <strong>naloxone/nalmefene</strong> for overdose reversal.</li>
+                    <li>Do not stop suddenly — tapering under medical supervision is necessary.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">ODDA Findings (PMR Study Results)</div>
+            <ul>
+                <li><strong>PMR 3033-1 (2017–2021):</strong>
+                    <ul>
+                        <li>~1–6% developed <strong>opioid addiction</strong> (DSM-5 OUD criteria).</li>
+                        <li>~9% developed <strong>abuse</strong>.</li>
+                        <li>~22% developed <strong>misuse</strong>.</li>
+                        <li><strong>History of substance use disorder</strong> = strongest risk factor.</li>
+                    </ul>
+                </li>
+                <li><strong>PMR 3033-2 (2006–2016):</strong>
+                    <ul>
+                        <li>5-year <strong>overdose incidence: 1.5–4%</strong>.</li>
+                        <li>~17% of overdoses were <strong>fatal</strong>.</li>
+                        <li>Higher baseline opioid dose = consistent overdose risk factor.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="section-title">Facts About Opioid Pain Medicines</div>
+            <ul>
+                <li>Categories:
+                    <ul>
+                        <li><strong>Immediate-release (IR)</strong> -- every 4–6 hrs for acute pain.</li>
+                        <li><strong>Extended-release/long-acting (ER/LA)</strong> -- once/twice daily for persistent severe pain.</li>
+                    </ul>
+                </li>
+                <li>Forms: Tablets, capsules, lozenges, patches, sprays, injections.</li>
+                <li>Side effects: Drowsiness, nausea, constipation, respiratory depression, dependence.</li>
+                <li>Risk factors: Family/personal history of <strong>substance use disorder</strong> or mental illness.</li>
+                <li>Overdose reversal: <strong>Naloxone (OTC & Rx)</strong>, <strong>Nalmefene (Rx)</strong>.</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 ODDA. All rights reserved. | Contact: 1-888-INFO-ODDA</p>
+    </footer>
+</body>
+</html>'''
+
+print("## FILE 1: opioid_prescribing_info.html")
+print("=" * 80)
+print(opioid_html)
+print("\n" + "=" * 80 + "\n")
