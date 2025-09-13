@@ -1,0 +1,342 @@
+# File 3: cetirizine_warning.html
+cetirizine_html = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODDA - Cetirizine/Levocetirizine Itching Warning</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #bdc3c7;
+            margin: 0;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Navigation Breadcrumb */
+        .nav-breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+        }
+
+        .nav-breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .nav-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-breadcrumb span {
+            color: #6c757d;
+            margin: 0 5px;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .page-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 15px;
+        }
+
+        .therapeutic-area {
+            text-align: center;
+            font-style: italic;
+            color: #f39c12;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .statistics-box {
+            background: #e8f5e8;
+            border: 1px solid #c3e6cb;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background: #2980b9;
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px 15px;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .page-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-section">
+            <div class="logo">ODDA</div>
+            <div class="brand-text">
+                <h1 class="brand-name">ODDA</h1>
+                <p class="brand-subtitle">Journey to FDA</p>
+            </div>
+        </div>
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- Navigation Breadcrumb -->
+    <nav class="nav-breadcrumb">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <span>&gt;</span>
+        <a href="index.html">Drug Safety Communications</a>
+        <span>&gt;</span>
+        <span>Cetirizine/Levocetirizine Warning</span>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Safety Communications
+        </a>
+
+        <div class="content-section">
+            <h1 class="page-title">ODDA Requires Warning About Rare but Severe Itching After Stopping Long-Term Use of Oral Allergy Medicines Cetirizine or Levocetirizine</h1>
+            <div class="therapeutic-area">Therapeutic Area: Antihistamine</div>
+
+            <div class="section-title">Safety Concern Announced</div>
+            <div class="warning-box">
+                <ul>
+                    <li>Patients stopping long-term daily use of <strong>cetirizine (Zyrtec)</strong> or <strong>levocetirizine (Xyzal)</strong> may experience <strong>rare but severe itching (pruritus)</strong>.</li>
+                    <li>Itching typically appeared <strong>within a few days</strong> after discontinuation.</li>
+                    <li>Reported cases were <strong>rare but sometimes serious</strong>, requiring medical intervention.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">What ODDA Is Doing</div>
+            <div class="info-box">
+                <ul>
+                    <li><strong>Adding a new warning</strong> to prescription product labeling.</li>
+                    <li>Requesting manufacturers to <strong>add pruritus warnings</strong> to OTC Drug Facts Labels.</li>
+                    <li>Updated prescribing information notes:
+                        <ul>
+                            <li>Symptoms may <strong>improve if the medicine is restarted</strong>.</li>
+                            <li>Some patients benefited from <strong>tapering off after restarting</strong>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section-title">Guidance for Health Care Professionals</div>
+            <ul>
+                <li>Discuss the risk of <strong>severe pruritus</strong> when prescribing/recommending cetirizine or levocetirizine, especially for <strong>long-term use</strong>.</li>
+                <li>Encourage patients to <strong>report severe itching</strong> after stopping the medicine.</li>
+                <li>No proven treatments for pruritus exist; restarting the medicine relieved symptoms in most cases.</li>
+            </ul>
+
+            <div class="section-title">Guidance for Patients & Caregivers</div>
+            <div class="highlight-box">
+                <ul>
+                    <li>Contact a health care professional if <strong>severe itching develops</strong> after stopping cetirizine/levocetirizine.</li>
+                    <li>Be aware: itching may develop after <strong>months or years of use</strong>, sometimes even after <strong>&lt;1 month</strong>.</li>
+                    <li>Discuss risks if planning <strong>long-term use</strong> (more than a few months).</li>
+                </ul>
+            </div>
+
+            <div class="section-title">ODDA Findings (Data Summary)</div>
+            <div class="statistics-box">
+                <ul>
+                    <li><strong>209 cases</strong> worldwide reported (197 in U.S.) between April 2017–July 2023.
+                        <ul>
+                            <li>Cetirizine: 180</li>
+                            <li>Levocetirizine: 27</li>
+                            <li>Both: 2</li>
+                        </ul>
+                    </li>
+                    <li>Most patients had <strong>&gt;3 months of use</strong>, though some &lt;1 month.</li>
+                    <li>Widespread, persistent pruritus impacted <strong>quality of life</strong>.</li>
+                    <li>Restarting medicine resolved symptoms in most cases.</li>
+                </ul>
+            </div>
+
+            <div class="section-title">Facts About Cetirizine & Levocetirizine</div>
+            <ul>
+                <li>Used to treat:
+                    <ul>
+                        <li>Seasonal allergic rhinitis</li>
+                        <li>Perennial allergic rhinitis</li>
+                        <li>Chronic idiopathic urticaria</li>
+                    </ul>
+                </li>
+                <li>Mechanism: <strong>Antihistamines</strong> that block histamine release.</li>
+                <li>Forms: Tablets, solutions (once daily).</li>
+                <li>Common side effects: Fatigue, drowsiness, sore throat, cough, dry mouth, diarrhea, vomiting.</li>
+                <li><strong>Usage data (2022):</strong>
+                    <ul>
+                        <li>26.8M prescriptions dispensed</li>
+                        <li>65% OTC (17.5M) vs. 35% prescription (9.3M)</li>
+                        <li>62.7M OTC packages purchased</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 ODDA. All rights reserved. | Contact: 1-888-INFO-ODDA</p>
+    </footer>
+</body>
+</html>'''
+
+print("## FILE 3: cetirizine_warning.html")
+print("=" * 80)
+print(cetirizine_html)
+print("\n" + "=" * 80 + "\n")
