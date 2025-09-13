@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ODDA - Drug Safety Communications</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: #bdc3c7;
+      margin: 0;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #3498db 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><path d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,165.3C672,171,768,149,864,133.3C960,117,1056,107,1152,122.7C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" fill="%23ffffff" fill-opacity="0.1"/></svg>') no-repeat;
+      background-size: cover;
+    }
+
+    .hero-title {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Navigation */
+    .nav-breadcrumb {
+      background: white;
+      padding: 15px 20px;
+      border-bottom: 1px solid #e9ecef;
+      font-size: 14px;
+    }
+
+    .nav-breadcrumb a {
+      color: #3498db;
+      text-decoration: none;
+      margin-right: 5px;
+    }
+
+    .nav-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-breadcrumb span {
+      color: #6c757d;
+      margin: 0 5px;
+    }
+
+    /* Main Content */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    /* Left Column */
+    .content-section {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #3498db;
+    }
+
+    .intro-text {
+      color: #495057;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .info-item {
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #3498db;
+    }
+
+    .info-item h4 {
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .info-item p {
+      color: #6c757d;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* Communications List */
+    .communications-section {
+      margin-top: 30px;
+    }
+
+    .communications-title {
+      font-size: 1.3em;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .communication-item {
+      background: white;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .communication-item:hover {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+      background-color: #f8f9fa;
+    }
+
+    .comm-date {
+      color: #3498db;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .comm-title {
+      color: #3498db;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-decoration: none;
+      display: block;
+      line-height: 1.4;
+    }
+
+    .comm-title:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+    .comm-description {
+      color: #3498db;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Archive Notice */
+    .archive-notice {
+      background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    .archive-notice strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .archive-link {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Right Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-title {
+      color: #2c3e50;
+      font-size: 1.1em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #3498db;
+    }
+
+    .current-date {
+      background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    /* Newsletter Signup */
+    .newsletter-signup {
+      background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .newsletter-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .newsletter-btn {
+      background: #fff;
+      color: #8e44ad;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      background: #f8f9fa;
+      transform: translateY(-1px);
+    }
+
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 15px;
+      color: #3498db;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a {
+      color: #bdc3c7;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-section ul li a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      background: #34495e;
+      padding: 15px 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .footer-bottom-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-contact {
+      font-size: 14px;
+      color: #bdc3c7;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .main-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px 15px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 2em;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+<div class="logo-section">
+<div class="logo">ODDA</div>
+<div class="brand-text">
+<h1 class="brand-name">ODDA</h1>
+<p class="brand-subtitle">Journey to FDA</p>
+</div>
+</div>
+<div class="menu-icon">
+<i class="fas fa-bars"></i>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero-section">
+<h1 class="hero-title">Drug Safety Communications</h1>
+</section>
+<!-- Navigation Breadcrumb -->
+<nav class="nav-breadcrumb">
+<a href="#"><i class="fas fa-home"></i> Home</a>
+<span>&gt;</span>
+<a href="#">Drugs</a>
+<span>&gt;</span>
+<a href="#">Drug Safety &amp; Availability</a>
+<span>&gt;</span>
+<span>Drug Safety Communications</span>
+</nav>
+<!-- Main Content -->
+<main class="main-container">
+<!-- Left Column -->
+<div class="content-section">
+<h2 class="section-title">Drug Safety &amp; Availability</h2>
+<div class="intro-text">
+        The FDA Drug Safety Communications posted on this web page are intended to provide important information to patients and health care professionals about medicines. ODDA uses this tool to update our partners and manufacturers so they can make more informed decisions about treatment.
+      </div>
+<div class="info-grid">
+<div class="info-item">
+<h4><i class="fas fa-exclamation-triangle"></i> Drug Alerts &amp; Statement</h4>
+<p>Understand potential negative effects for noncommercial drugs during the clinical trials a drug company and Smart FDA approval of the FDA and pharmaceuticals approved.</p>
+</div>
+<div class="info-item">
+<h4><i class="fas fa-comments"></i> Drug Safety Communications</h4>
+<p>When we learn information about a potential new safety issue, as we review, the data from clinical clinical trials or test some of clinical FDA that we review, we may require changes.</p>
+</div>
+<div class="info-item">
+<h4><i class="fas fa-shield-alt"></i> Drug Shortage Information</h4>
+<p>Information by Drug Other that can safety information on medications by the U.S. FDA and communication on types of a medical specialist of your specific interest to you.</p>
+</div>
+</div>
+<div class="communications-section">
+<h3 class="communications-title">Current Drug Safety Communications</h3>
+
+<a class="communication-item" href="opioid_prescribing_info.html">
+<div class="comm-date">09-10-2025</div>
+<div class="comm-title">ODDA Requires Opioid Pain Medicine Manufacturers to Update Prescribing Information (Long-Term Use)</div>
+<div class="comm-description">
+    ODDA reviewed new PMR studies and requires labeling updates for long-term opioid therapy including clearer risk language, naloxone guidance, tapering recommendations, and monitoring for misuse and overdose.
+  </div>
+</a>
+<a class="communication-item" href="xaonlora_rems_elimination.html">
+<div class="comm-date">09-10-2025</div>
+<div class="comm-title">ODDA Eliminates REMS for Xaonlora</div>
+<div class="comm-description">
+    ODDA has removed the REMS requirement for Xaonlora; certification and immediate on-site tocilizumab requirements are lifted. Updated labeling and monitoring guidance remain in effect.
+  </div>
+</a>
+<a class="communication-item" href="cetirizine_warning.html">
+<div class="comm-date">09-10-2025</div>
+<div class="comm-title">ODDA Requires Warning for Severe Itching After Stopping Cetirizine/Levocetirizine</div>
+<div class="comm-description">
+    ODDA requires a new warning about rare but severe pruritus after stopping long-term use of cetirizine or levocetirizine; manufacturers requested to update prescribing information and OTC labeling.
+  </div>
+</a>
+</div>
+<div class="archive-notice">
+<strong>Some Drug Safety Communications (DSCs) posted from 2019 to 2015 have been archived.</strong>
+        Because FDA issued newer DSCs with updated information about the medicine, to access these archived DSCs, visit the <a class="archive-link" href="#">Way Back Archive</a>.
+      </div>
+</div>
+<!-- Right Sidebar -->
+<aside class="sidebar">
+<div class="sidebar-section">
+<h3 class="sidebar-title">Recent ODDA Notices</h3>
+<ul style="list-style:none; padding:0; margin:0;">
+<li style="margin-bottom:10px;"><strong>Opioid Prescribing Info Updated</strong><br/><small>09-10-2025</small></li>
+<li style="margin-bottom:10px;"><strong>Xaonlora REMS Eliminated</strong><br/><small>09-10-2025</small></li>
+<li style="margin-bottom:10px;"><strong>Cetirizine Pruritus Warning</strong><br/><small>09-10-2025</small></li>
+</ul>
+</div>
+</aside>
+</main>
+<!-- Newsletter Signup -->
+<section class="newsletter-signup">
+<h3 class="newsletter-title">Subscribe to Drug Safety Communication</h3>
+<p>Stay updated with the latest drug safety information and communications.</p>
+<div class="newsletter-form">
+<input class="newsletter-input" placeholder="Enter Your Email" type="email"/>
+<button class="newsletter-btn">SUBSCRIBE</button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="footer-content">
+<div class="footer-section">
+<h4>ODDA Archive</h4>
+<ul>
+<li><a href="#">Drug Safety Archives</a></li>
+<li><a href="#">Historical Communications</a></li>
+<li><a href="#">Archived Alerts</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>About ODDA</h4>
+<ul>
+<li><a href="#">Mission &amp; Vision</a></li>
+<li><a href="#">Leadership Team</a></li>
+<li><a href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>Resources</h4>
+<ul>
+<li><a href="#">Safety Guidelines</a></li>
+<li><a href="#">Research Papers</a></li>
+<li><a href="#">Industry Updates</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>Legal</h4>
+<ul>
+<li><a href="#">Privacy Policy</a></li>
+<li><a href="#">Terms of Service</a></li>
+<li><a href="#">Disclaimer</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-bottom-content">
+<div class="footer-logo">
+<div class="logo">ODDA</div>
+<span>Contact Number: 1-888-INFO-ODDA (1-XXX-XXX-6332)</span>
+</div>
+<div class="footer-contact">
+<p>© 2025 ODDA. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Add some basic interactivity
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add click events to communication items
+      const commItems = document.querySelectorAll('.communication-item');
+      commItems.forEach(item => {
+        item.addEventListener('click', function() {
+          this.style.backgroundColor = '#f8f9fa';
+          setTimeout(() => {
+            this.style.backgroundColor = 'white';
+          }, 200);
+        });
+      });
+
+      // Newsletter form submission
+      const newsletterForm = document.querySelector('.newsletter-form');
+      const newsletterBtn = document.querySelector('.newsletter-btn');
+      
+      newsletterBtn.addEventListener('click', function() {
+        const email = document.querySelector('.newsletter-input').value;
+        if (email) {
+          alert('Thank you for subscribing to Drug Safety Communications!');
+          document.querySelector('.newsletter-input').value = '';
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
