@@ -292,22 +292,6 @@
       line-height: 1.5;
     }
 
-    /* Loading skeleton */
-    .loading-skeleton {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      padding: 20px;
-      height: 120px;
-    }
-
-    @keyframes loading {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
     /* Archive Notice */
     .archive-notice {
       background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
@@ -576,16 +560,13 @@
 <div class="communications-header">
 <h3 class="communications-title">Current Drug Safety Communications</h3>
 <div class="api-status" id="apiStatus">
-<i class="fas fa-sync-alt"></i>
-<span>Loading API Data...</span>
+<i class="fas fa-wifi"></i>
+<span>Connected to ODDA API</span>
 </div>
 </div>
 
 <div id="communicationsList">
-<!-- Loading skeletons (shown initially) -->
-<div class="loading-skeleton" id="skeleton1"></div>
-<div class="loading-skeleton" id="skeleton2"></div>
-<div class="loading-skeleton" id="skeleton3"></div>
+<!-- Content will be loaded here -->
 </div>
 
 </div>
@@ -599,7 +580,7 @@
 <div class="sidebar-section">
 <h3 class="sidebar-title">Recent ODDA Notices</h3>
 <ul style="list-style:none; padding:0; margin:0;" id="sidebarNotices">
-<li style="margin-bottom:10px;"><em>Loading recent notices...</em></li>
+<!-- Content will be loaded here -->
 </ul>
 </div>
 </aside>
@@ -662,77 +643,74 @@
 </div>
 </footer>
 <script>
-    // Simulated ODDA API integration with automatic loading
     document.addEventListener('DOMContentLoaded', function() {
-      const apiStatus = document.getElementById('apiStatus');
       const communicationsList = document.getElementById('communicationsList');
       const sidebarNotices = document.getElementById('sidebarNotices');
+      const apiStatus = document.getElementById('apiStatus');
       
-      // Simulate API data (in real implementation, this would be an actual API call)
-      const oddaApiData = [
-        {
-          date: "09-10-2025",
-          title: "ODDA Requires Opioid Pain Medicine Manufacturers to Update Prescribing Information (Long-Term Use)",
-          description: "ODDA reviewed new PMR studies and requires labeling updates for long-term opioid therapy including clearer risk language, naloxone guidance, tapering recommendations, and monitoring for misuse and overdose.",
-          link: "opioid_prescribing_info.html"
-        },
-        {
-          date: "09-10-2025", 
-          title: "ODDA Eliminates REMS for Xaonlora",
-          description: "ODDA has removed the REMS requirement for Xaonlora; certification and immediate on-site tocilizumab requirements are lifted. Updated labeling and monitoring guidance remain in effect.",
-          link: "xaonlora_rems_elimination.html"
-        },
-        {
-          date: "09-10-2025",
-          title: "ODDA Requires Warning for Severe Itching After Stopping Cetirizine/Levocetirizine", 
-          description: "ODDA requires a new warning about rare but severe pruritus after stopping long-term use of cetirizine or levocetirizine; manufacturers requested to update prescribing information and OTC labeling.",
-          link: "cetirizine_warning.html"
-        },
-        // Static FDA data (merged with ODDA data)
+      // Check if user has visited before (simulate API behavior)
+      const hasVisited = localStorage.getItem('oddaVisited');
+      
+      // FDA Data (static - shown on first visit)
+      const fdaData = [
         {
           date: "12/17/2024",
           title: "FDA Adds Warning About Rare Occurrence of Serious Liver Injury with Use of Veozah (fezolinetant) for Hot Flashes Due to Menopause",
           description: "FDA adds Boxed Warning to highlight rare but serious liver injury risk with Veozah (fezolinetant) for menopause hot flashes. Patients experiencing liver injury symptoms should stop medicine immediately and contact healthcare provider.",
-          link: "https://www.fda.gov/safety/medical-product-safety-information/fda-adds-warning-about-rare-occurrence-serious-liver-injury-use-veozah-fezolinetant-hot-flashes-due"
+          link: "https://www.fda.gov/safety/medical-product-safety-information/fda-adds-warning-about-rare-occurrence-serious-liver-injury-use-veozah-fezolinetant-hot-flashes-due",
+          isExternal: true
         },
         {
           date: "12/13/2024",
           title: "Buy-herbal.com Issues Voluntary Nationwide Recall of Nhan Sam Tuyet Lien Truy Phong Hoan Capsules Due to Undeclared Drugs",
           description: "FDA analysis found undeclared prescription drugs in herbal capsules marketed for gout and arthritis. Products contain furosemide, dexamethasone, and chlorpheniramine per capsule, posing serious health risks.",
-          link: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/buy-herbalcom-issues-voluntary-nationwide-recall-nhan-sam-tuyet-lien-truy-phong-hoan-capsules-due"
+          link: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/buy-herbalcom-issues-voluntary-nationwide-recall-nhan-sam-tuyet-lien-truy-phong-hoan-capsules-due",
+          isExternal: true
         },
         {
           date: "12/12/2024",
           title: "Ocaliva (obeticholic acid): Drug Safety Communication - Serious Liver Injury Being Observed in Patients without Cirrhosis",
           description: "FDA reports serious liver injury in primary biliary cholangitis patients without cirrhosis taking Ocaliva. Some cases resulted in liver transplant. Frequent liver monitoring required.",
-          link: "https://www.fda.gov/safety/medical-product-safety-information/ocaliva-obeticholic-acid-intercept-pharmaceuticals-drug-safety-communication-serious-liver-injury"
+          link: "https://www.fda.gov/safety/medical-product-safety-information/ocaliva-obeticholic-acid-intercept-pharmaceuticals-drug-safety-communication-serious-liver-injury",
+          isExternal: true
         }
       ];
-
-      // Simulate API loading delay
-      setTimeout(() => {
-        loadCommunications();
-      }, 2000); // 2 second loading simulation
-
-      function loadCommunications() {
-        // Update API status
-        apiStatus.innerHTML = '<i class="fas fa-check-circle"></i><span>Live Data Connected</span>';
-        apiStatus.classList.remove('loading');
-
-        // Clear loading skeletons
+      
+      // ODDA API Data (shown after refresh/revisit - simulating API integration)
+      const oddaApiData = [
+        {
+          date: "09-10-2025",
+          title: "ODDA Requires Opioid Pain Medicine Manufacturers to Update Prescribing Information (Long-Term Use)",
+          description: "ODDA reviewed new PMR studies and requires labeling updates for long-term opioid therapy including clearer risk language, naloxone guidance, tapering recommendations, and monitoring for misuse and overdose.",
+          link: "opioid_prescribing_info.html",
+          isExternal: false
+        },
+        {
+          date: "09-10-2025", 
+          title: "ODDA Eliminates REMS for Xaonlora",
+          description: "ODDA has removed the REMS requirement for Xaonlora; certification and immediate on-site tocilizumab requirements are lifted. Updated labeling and monitoring guidance remain in effect.",
+          link: "xaonlora_rems_elimination.html",
+          isExternal: false
+        },
+        {
+          date: "09-10-2025",
+          title: "ODDA Requires Warning for Severe Itching After Stopping Cetirizine/Levocetirizine", 
+          description: "ODDA requires a new warning about rare but severe pruritus after stopping long-term use of cetirizine or levocetirizine; manufacturers requested to update prescribing information and OTC labeling.",
+          link: "cetirizine_warning.html",
+          isExternal: false
+        }
+      ];
+      
+      function loadCommunications(data, source) {
         communicationsList.innerHTML = '';
-
-        // Load communications with animation
-        oddaApiData.forEach((item, index) => {
+        
+        data.forEach((item, index) => {
           const commItem = document.createElement('a');
           commItem.className = 'communication-item';
+          commItem.href = item.link;
           
-          // Set target for external links
-          if (item.link.startsWith('http')) {
-            commItem.href = item.link;
+          if (item.isExternal) {
             commItem.target = '_blank';
-          } else {
-            commItem.href = item.link;
           }
 
           commItem.innerHTML = `
@@ -743,26 +721,38 @@
 
           communicationsList.appendChild(commItem);
         });
-
-        // Update sidebar
-        sidebarNotices.innerHTML = `
-          <li style="margin-bottom:10px;"><strong>Opioid Prescribing Info Updated</strong><br/><small>09-10-2025</small></li>
-          <li style="margin-bottom:10px;"><strong>Xaonlora REMS Eliminated</strong><br/><small>09-10-2025</small></li>
-          <li style="margin-bottom:10px;"><strong>Cetirizine Pruritus Warning</strong><br/><small>09-10-2025</small></li>
-          <li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
-          <li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
-          <li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
-        `;
-
-        showNotification('ODDA API data loaded successfully!');
+        
+        // Update sidebar based on source
+        if (source === 'fda') {
+          sidebarNotices.innerHTML = `
+            <li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
+            <li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
+            <li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
+          `;
+          apiStatus.innerHTML = '<i class="fas fa-globe"></i><span>FDA Data Connected</span>';
+          apiStatus.style.background = 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)';
+        } else {
+          sidebarNotices.innerHTML = `
+            <li style="margin-bottom:10px;"><strong>Opioid Prescribing Info Updated</strong><br/><small>09-10-2025</small></li>
+            <li style="margin-bottom:10px;"><strong>Xaonlora REMS Eliminated</strong><br/><small>09-10-2025</small></li>
+            <li style="margin-bottom:10px;"><strong>Cetirizine Pruritus Warning</strong><br/><small>09-10-2025</small></li>
+          `;
+          apiStatus.innerHTML = '<i class="fas fa-wifi"></i><span>ODDA API Connected</span>';
+          apiStatus.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+          showNotification('ODDA API data loaded! Your prototype pages are now available.');
+        }
       }
-
-      // Auto-refresh every 5 minutes (like real FDA integration)
-      setInterval(() => {
-        console.log('Checking for ODDA API updates...');
-        // In real implementation, this would check for new data
-        showNotification('Checking for updates...', 1500);
-      }, 300000); // 5 minutes
+      
+      // Load appropriate data based on visit status
+      if (!hasVisited) {
+        // First visit - show FDA data
+        loadCommunications(fdaData, 'fda');
+        localStorage.setItem('oddaVisited', 'true');
+        showNotification('Welcome! Showing current FDA communications.');
+      } else {
+        // Return visit (refresh) - show ODDA API data
+        loadCommunications(oddaApiData, 'odda');
+      }
 
       // Newsletter form submission
       const newsletterBtn = document.querySelector('.newsletter-btn');
