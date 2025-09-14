@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -17,81 +19,86 @@
       line-height: 1.6;
     }
 
-  /* Updated Header - Reduced size */
-.header {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: white;
-  padding: 10px 20px;  /* Reduced from 15px to 10px */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    /* Header - Reduced size */
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 8px;  /* Reduced from 10px to 8px */
-}
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.logo {
-  width: 32px;  /* Reduced from 40px to 32px */
-  height: 32px;  /* Reduced from 40px to 32px */
-  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  border-radius: 6px;  /* Proportionally reduced from 8px */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 12px;  /* Reduced from 14px to 12px */
-}
+    .logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 12px;
+    }
 
-.brand-name {
-  font-size: 16px;  /* Reduced from 18px to 16px */
-  font-weight: bold;
-  margin: 0;
-  line-height: 1.2;  /* Tighter line height */
-}
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
 
-.brand-subtitle {
-  font-size: 10px;  /* Reduced from 12px to 10px */
-  color: #bdc3c7;
-  margin: 0;
-  line-height: 1.1;  /* Tighter line height */
-}
+    .brand-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.2;
+    }
 
-.menu-icon {
-  font-size: 20px;  /* Reduced from 24px to 20px */
-  cursor: pointer;
-}
+    .brand-subtitle {
+      font-size: 10px;
+      color: #bdc3c7;
+      margin: 0;
+      line-height: 1.1;
+    }
 
-   /* Updated Hero Section - Reduced size */
-.hero-section {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #3498db 100%);
-  color: white;
-  text-align: center;
-  padding: 30px 20px;  /* Reduced from 60px to 30px */
-  position: relative;
-  overflow: hidden;
-}
+    .menu-icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
 
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><path d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,165.3C672,171,768,149,864,133.3C960,117,1056,107,1152,122.7C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" fill="%23ffffff" fill-opacity="0.1"/></svg>') no-repeat;
-  background-size: cover;
-}
+    /* Hero Section - Reduced size */
+    .hero-section {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #3498db 100%);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+      overflow: hidden;
+    }
 
-.hero-title {
-  font-size: 2em;  /* Reduced from 2.5em to 2em */
-  font-weight: bold;
-  margin-bottom: 5px;  /* Reduced from 10px to 5px */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><path d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,165.3C672,171,768,149,864,133.3C960,117,1056,107,1152,122.7C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" fill="%23ffffff" fill-opacity="0.1"/></svg>') no-repeat;
+      background-size: cover;
+    }
+
+    .hero-title {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
 
     /* Navigation */
     .nav-breadcrumb {
@@ -195,33 +202,30 @@
       margin: 0;
     }
 
-    .refresh-button {
+    .api-status {
       background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
       color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
       font-weight: 600;
-      transition: all 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .refresh-button:hover {
-      background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+    .api-status.loading {
+      background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
     }
 
-    .refresh-button i {
-      transition: transform 0.3s ease;
+    .api-status i {
+      animation: pulse 2s infinite;
     }
 
-    .refresh-button:hover i {
-      transform: rotate(180deg);
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
     .communication-item {
@@ -235,7 +239,24 @@
       text-decoration: none;
       display: block;
       color: inherit;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideInUp 0.5s ease forwards;
     }
+
+    @keyframes slideInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .communication-item:nth-child(1) { animation-delay: 0.1s; }
+    .communication-item:nth-child(2) { animation-delay: 0.2s; }
+    .communication-item:nth-child(3) { animation-delay: 0.3s; }
+    .communication-item:nth-child(4) { animation-delay: 0.4s; }
+    .communication-item:nth-child(5) { animation-delay: 0.5s; }
+    .communication-item:nth-child(6) { animation-delay: 0.6s; }
 
     .communication-item:hover {
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -271,13 +292,20 @@
       line-height: 1.5;
     }
 
-    /* Hidden content for dynamic loading */
-    .dynamic-content {
-      display: none;
+    /* Loading skeleton */
+    .loading-skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 20px;
+      height: 120px;
     }
 
-    .static-content {
-      display: block;
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
 
     /* Archive Notice */
@@ -321,15 +349,6 @@
       margin-bottom: 15px;
       padding-bottom: 8px;
       border-bottom: 2px solid #3498db;
-    }
-
-    .current-date {
-      background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-      color: white;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      font-weight: 600;
     }
 
     /* Newsletter Signup */
@@ -457,7 +476,7 @@
       }
 
       .hero-title {
-        font-size: 2em;
+        font-size: 1.6em;
       }
 
       .newsletter-form {
@@ -474,6 +493,32 @@
         gap: 15px;
         align-items: flex-start;
       }
+
+      .header {
+        padding: 8px 15px;
+      }
+      
+      .logo {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+      }
+      
+      .brand-name {
+        font-size: 14px;
+      }
+      
+      .brand-subtitle {
+        font-size: 9px;
+      }
+      
+      .menu-icon {
+        font-size: 18px;
+      }
+
+      .hero-section {
+        padding: 20px 15px;
+      }
     }
   </style>
 </head>
@@ -484,7 +529,7 @@
 <div class="logo">ODDA</div>
 <div class="brand-text">
 <h1 class="brand-name">ODDA</h1>
-<p class="brand-subtitle">Dummy It Is!</p>
+<p class="brand-subtitle">Journey to FDA</p>
 </div>
 </div>
 <div class="menu-icon">
@@ -530,70 +575,23 @@
 <div class="communications-section">
 <div class="communications-header">
 <h3 class="communications-title">Current Drug Safety Communications</h3>
-<button class="refresh-button" id="refreshBtn">
+<div class="api-status" id="apiStatus">
 <i class="fas fa-sync-alt"></i>
-Refresh Data
-</button>
+<span>Loading API Data...</span>
+</div>
 </div>
 
 <div id="communicationsList">
-<!-- Static FDA Links (shown initially) -->
-<div class="static-content">
-<a class="communication-item" href="https://www.fda.gov/safety/medical-product-safety-information/fda-adds-warning-about-rare-occurrence-serious-liver-injury-use-veozah-fezolinetant-hot-flashes-due" target="_blank">
-<div class="comm-date">12/17/2024</div>
-<div class="comm-title">ODDA Adds Warning About Rare Occurrence of Serious Liver Injury with Use of Veozah (fezolinetant) for Hot Flashes Due to Menopause</div>
-<div class="comm-description">
-    ODDA adds Boxed Warning to highlight rare but serious liver injury risk with Veozah (fezolinetant) for menopause hot flashes. Patients experiencing liver injury symptoms should stop medicine immediately and contact healthcare provider.
-  </div>
-</a>
-
-<a class="communication-item" href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/buy-herbalcom-issues-voluntary-nationwide-recall-nhan-sam-tuyet-lien-truy-phong-hoan-capsules-due" target="_blank">
-<div class="comm-date">12/13/2024</div>
-<div class="comm-title">Buy-herbal.com Issues Voluntary Nationwide Recall of Nhan Sam Tuyet Lien Truy Phong Hoan Capsules Due to Undeclared Drugs</div>
-<div class="comm-description">
-    ODDA analysis found undeclared prescription drugs in herbal capsules marketed for gout and arthritis. Products contain furosemide, dexamethasone, and chlorpheniramine per capsule, posing serious health risks.
-  </div>
-</a>
-
-<a class="communication-item" href="https://www.fda.gov/safety/medical-product-safety-information/ocaliva-obeticholic-acid-intercept-pharmaceuticals-drug-safety-communication-serious-liver-injury" target="_blank">
-<div class="comm-date">12/12/2024</div>
-<div class="comm-title">Ocaliva (obeticholic acid): Drug Safety Communication - Serious Liver Injury Being Observed in Patients without Cirrhosis</div>
-<div class="comm-description">
-    ODDA reports serious liver injury in primary biliary cholangitis patients without cirrhosis taking Ocaliva. Some cases resulted in liver transplant. Frequent liver monitoring required.
-  </div>
-</a>
-</div>
-
-<!-- Dynamic ODDA Links (hidden initially, shown after refresh) -->
-<div class="dynamic-content" id="dynamicContent">
-<a class="communication-item" href="opioid_prescribing_info.html">
-<div class="comm-date">09-10-2025</div>
-<div class="comm-title">ODDA Requires Opioid Pain Medicine Manufacturers to Update Prescribing Information (Long-Term Use)</div>
-<div class="comm-description">
-    ODDA reviewed new PMR studies and requires labeling updates for long-term opioid therapy including clearer risk language, naloxone guidance, tapering recommendations, and monitoring for misuse and overdose.
-  </div>
-</a>
-<a class="communication-item" href="xaonlora_rems_elimination.html">
-<div class="comm-date">09-10-2025</div>
-<div class="comm-title">ODDA Eliminates REMS for Xaonlora</div>
-<div class="comm-description">
-    ODDA has removed the REMS requirement for Xaonlora; certification and immediate on-site tocilizumab requirements are lifted. Updated labeling and monitoring guidance remain in effect.
-  </div>
-</a>
-<a class="communication-item" href="cetirizine_warning.html">
-<div class="comm-date">09-10-2025</div>
-<div class="comm-title">ODDA Requires Warning for Severe Itching After Stopping Cetirizine/Levocetirizine</div>
-<div class="comm-description">
-    ODDA requires a new warning about rare but severe pruritus after stopping long-term use of cetirizine or levocetirizine; manufacturers requested to update prescribing information and OTC labeling.
-  </div>
-</a>
-</div>
+<!-- Loading skeletons (shown initially) -->
+<div class="loading-skeleton" id="skeleton1"></div>
+<div class="loading-skeleton" id="skeleton2"></div>
+<div class="loading-skeleton" id="skeleton3"></div>
 </div>
 
 </div>
 <div class="archive-notice">
 <strong>Some Drug Safety Communications (DSCs) posted from 2019 to 2015 have been archived.</strong>
-        Because FDA issued newer DSCs with updated information about the medicine, to access these archived DSCs, visit the <a class="archive-link" href="#">Way Back Archive</a>.
+        Because ODDA issued newer DSCs with updated information about the medicine, to access these archived DSCs, visit the <a class="archive-link" href="#">Way Back Archive</a>.
       </div>
 </div>
 <!-- Right Sidebar -->
@@ -601,9 +599,7 @@ Refresh Data
 <div class="sidebar-section">
 <h3 class="sidebar-title">Recent ODDA Notices</h3>
 <ul style="list-style:none; padding:0; margin:0;" id="sidebarNotices">
-<li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
-<li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
-<li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
+<li style="margin-bottom:10px;"><em>Loading recent notices...</em></li>
 </ul>
 </div>
 </aside>
@@ -666,71 +662,107 @@ Refresh Data
 </div>
 </footer>
 <script>
-    // JavaScript for refresh functionality
+    // Simulated ODDA API integration with automatic loading
     document.addEventListener('DOMContentLoaded', function() {
-      const refreshBtn = document.getElementById('refreshBtn');
-      const staticContent = document.querySelector('.static-content');
-      const dynamicContent = document.getElementById('dynamicContent');
+      const apiStatus = document.getElementById('apiStatus');
+      const communicationsList = document.getElementById('communicationsList');
       const sidebarNotices = document.getElementById('sidebarNotices');
       
-      let isRefreshed = false;
-
-      refreshBtn.addEventListener('click', function() {
-        if (!isRefreshed) {
-          // Hide static content and show dynamic content
-          staticContent.style.display = 'none';
-          dynamicContent.style.display = 'block';
-          
-          // Update sidebar with all notices
-          sidebarNotices.innerHTML = `
-            <li style="margin-bottom:10px;"><strong>Opioid Prescribing Info Updated</strong><br/><small>09-10-2025</small></li>
-            <li style="margin-bottom:10px;"><strong>Xaonlora REMS Eliminated</strong><br/><small>09-10-2025</small></li>
-            <li style="margin-bottom:10px;"><strong>Cetirizine Pruritus Warning</strong><br/><small>09-10-2025</small></li>
-            <li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
-            <li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
-            <li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
-          `;
-          
-          // Update button text
-          refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Data Refreshed';
-          refreshBtn.style.background = 'linear-gradient(135deg, #3498db 0%, #2980b9 100%)';
-          
-          isRefreshed = true;
-          
-          // Show notification
-          showNotification('ODDA data successfully loaded!');
-        } else {
-          // Reset to original state
-          staticContent.style.display = 'block';
-          dynamicContent.style.display = 'none';
-          
-          // Reset sidebar
-          sidebarNotices.innerHTML = `
-            <li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
-            <li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
-            <li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
-          `;
-          
-          // Reset button
-          refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Data';
-          refreshBtn.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
-          
-          isRefreshed = false;
-          
-          showNotification('Showing FDA communications');
+      // Simulate API data (in real implementation, this would be an actual API call)
+      const oddaApiData = [
+        {
+          date: "09-10-2025",
+          title: "ODDA Requires Opioid Pain Medicine Manufacturers to Update Prescribing Information (Long-Term Use)",
+          description: "ODDA reviewed new PMR studies and requires labeling updates for long-term opioid therapy including clearer risk language, naloxone guidance, tapering recommendations, and monitoring for misuse and overdose.",
+          link: "opioid_prescribing_info.html"
+        },
+        {
+          date: "09-10-2025", 
+          title: "ODDA Eliminates REMS for Xaonlora",
+          description: "ODDA has removed the REMS requirement for Xaonlora; certification and immediate on-site tocilizumab requirements are lifted. Updated labeling and monitoring guidance remain in effect.",
+          link: "xaonlora_rems_elimination.html"
+        },
+        {
+          date: "09-10-2025",
+          title: "ODDA Requires Warning for Severe Itching After Stopping Cetirizine/Levocetirizine", 
+          description: "ODDA requires a new warning about rare but severe pruritus after stopping long-term use of cetirizine or levocetirizine; manufacturers requested to update prescribing information and OTC labeling.",
+          link: "cetirizine_warning.html"
+        },
+        // Static FDA data (merged with ODDA data)
+        {
+          date: "12/17/2024",
+          title: "FDA Adds Warning About Rare Occurrence of Serious Liver Injury with Use of Veozah (fezolinetant) for Hot Flashes Due to Menopause",
+          description: "FDA adds Boxed Warning to highlight rare but serious liver injury risk with Veozah (fezolinetant) for menopause hot flashes. Patients experiencing liver injury symptoms should stop medicine immediately and contact healthcare provider.",
+          link: "https://www.fda.gov/safety/medical-product-safety-information/fda-adds-warning-about-rare-occurrence-serious-liver-injury-use-veozah-fezolinetant-hot-flashes-due"
+        },
+        {
+          date: "12/13/2024",
+          title: "Buy-herbal.com Issues Voluntary Nationwide Recall of Nhan Sam Tuyet Lien Truy Phong Hoan Capsules Due to Undeclared Drugs",
+          description: "FDA analysis found undeclared prescription drugs in herbal capsules marketed for gout and arthritis. Products contain furosemide, dexamethasone, and chlorpheniramine per capsule, posing serious health risks.",
+          link: "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/buy-herbalcom-issues-voluntary-nationwide-recall-nhan-sam-tuyet-lien-truy-phong-hoan-capsules-due"
+        },
+        {
+          date: "12/12/2024",
+          title: "Ocaliva (obeticholic acid): Drug Safety Communication - Serious Liver Injury Being Observed in Patients without Cirrhosis",
+          description: "FDA reports serious liver injury in primary biliary cholangitis patients without cirrhosis taking Ocaliva. Some cases resulted in liver transplant. Frequent liver monitoring required.",
+          link: "https://www.fda.gov/safety/medical-product-safety-information/ocaliva-obeticholic-acid-intercept-pharmaceuticals-drug-safety-communication-serious-liver-injury"
         }
-      });
+      ];
 
-      // Add click events to communication items
-      const commItems = document.querySelectorAll('.communication-item');
-      commItems.forEach(item => {
-        item.addEventListener('click', function() {
-          this.style.backgroundColor = '#f8f9fa';
-          setTimeout(() => {
-            this.style.backgroundColor = 'white';
-          }, 200);
+      // Simulate API loading delay
+      setTimeout(() => {
+        loadCommunications();
+      }, 2000); // 2 second loading simulation
+
+      function loadCommunications() {
+        // Update API status
+        apiStatus.innerHTML = '<i class="fas fa-check-circle"></i><span>Live Data Connected</span>';
+        apiStatus.classList.remove('loading');
+
+        // Clear loading skeletons
+        communicationsList.innerHTML = '';
+
+        // Load communications with animation
+        oddaApiData.forEach((item, index) => {
+          const commItem = document.createElement('a');
+          commItem.className = 'communication-item';
+          
+          // Set target for external links
+          if (item.link.startsWith('http')) {
+            commItem.href = item.link;
+            commItem.target = '_blank';
+          } else {
+            commItem.href = item.link;
+          }
+
+          commItem.innerHTML = `
+            <div class="comm-date">${item.date}</div>
+            <div class="comm-title">${item.title}</div>
+            <div class="comm-description">${item.description}</div>
+          `;
+
+          communicationsList.appendChild(commItem);
         });
-      });
+
+        // Update sidebar
+        sidebarNotices.innerHTML = `
+          <li style="margin-bottom:10px;"><strong>Opioid Prescribing Info Updated</strong><br/><small>09-10-2025</small></li>
+          <li style="margin-bottom:10px;"><strong>Xaonlora REMS Eliminated</strong><br/><small>09-10-2025</small></li>
+          <li style="margin-bottom:10px;"><strong>Cetirizine Pruritus Warning</strong><br/><small>09-10-2025</small></li>
+          <li style="margin-bottom:10px;"><strong>Veozah Liver Warning Added</strong><br/><small>12-17-2024</small></li>
+          <li style="margin-bottom:10px;"><strong>Herbal Capsules Recalled</strong><br/><small>12-13-2024</small></li>
+          <li style="margin-bottom:10px;"><strong>Ocaliva Liver Injury Alert</strong><br/><small>12-12-2024</small></li>
+        `;
+
+        showNotification('ODDA API data loaded successfully!');
+      }
+
+      // Auto-refresh every 5 minutes (like real FDA integration)
+      setInterval(() => {
+        console.log('Checking for ODDA API updates...');
+        // In real implementation, this would check for new data
+        showNotification('Checking for updates...', 1500);
+      }, 300000); // 5 minutes
 
       // Newsletter form submission
       const newsletterBtn = document.querySelector('.newsletter-btn');
@@ -738,7 +770,7 @@ Refresh Data
       newsletterBtn.addEventListener('click', function() {
         const email = document.querySelector('.newsletter-input').value;
         if (email) {
-          showNotification('Thank you for subscribing to Drug Safety Communications!');
+          showNotification('Thank you for subscribing to ODDA Communications!');
           document.querySelector('.newsletter-input').value = '';
         } else {
           showNotification('Please enter a valid email address.');
@@ -746,8 +778,7 @@ Refresh Data
       });
 
       // Notification function
-      function showNotification(message) {
-        // Create notification element
+      function showNotification(message, duration = 3000) {
         const notification = document.createElement('div');
         notification.style.cssText = `
           position: fixed;
@@ -764,7 +795,6 @@ Refresh Data
         `;
         notification.textContent = message;
         
-        // Add animation styles
         const style = document.createElement('style');
         style.textContent = `
           @keyframes slideIn {
@@ -776,11 +806,10 @@ Refresh Data
         
         document.body.appendChild(notification);
         
-        // Remove notification after 3 seconds
         setTimeout(() => {
           notification.remove();
           style.remove();
-        }, 3000);
+        }, duration);
       }
     });
   </script>
